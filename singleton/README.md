@@ -51,3 +51,15 @@ O get_instance eh um indicativo de que se trata de um singleton
 - Possivei atraves das metaclasses - sobrescrever init method
 
 ![eager-loading-singleton](image-4.png)
+
+## Thread Safety
+
+- Mulitple threads = Race conditions
+- Nem sempre eh necessario criar o singleto thread safe.
+- Critical section = Area do codigo em que threads multiplas podem gerar comportamento imprevisivel -> Dado final depende do tempo de execucao
+- Determinar critical section eh complicado.  Geralmente envolve escrita de dados.
+
+- Race condition = threads competindo para mudar algo nos dados
+- Para previnir: LOCK MECHANISM
+
+![lock](image-6.png)
