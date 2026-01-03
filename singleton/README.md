@@ -63,3 +63,11 @@ O get_instance eh um indicativo de que se trata de um singleton
 - Para previnir: LOCK MECHANISM
 
 ![lock](image-6.png)
+
+# Exercises
+
+![1](image-7.png)
+
+![2](image-8.png)
+
+![3](image-9.png)
