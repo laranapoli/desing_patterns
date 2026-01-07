@@ -24,7 +24,7 @@ s1 = Singleton()
 class EagerSingletonMeta(type):
     _instances = {}
     # override: called during creation of sub-types
-    def __init__(cls, name, bases, dct):
+    def __init__(cls, name, bases, dct):  # esse é o init da classe e NÃO o da instancia
         super().__init__(name, bases, dct)
         # EAGER LOADING
         cls._instances[cls] = super().__call__()

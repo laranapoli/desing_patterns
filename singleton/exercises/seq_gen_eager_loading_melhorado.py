@@ -1,15 +1,21 @@
 class EagerSingletonMeta(type):
     _instances = {}
-    # override: called during creation of sub-types
+
     def __init__(cls, name, bases, dct):
         super().__init__(name, bases, dct)
-        # EAGER LOADING
-        cls._instances[cls] = super().__call__()
-    
-    # returns  the singleton instance
-    def __call__(cls, *args, **kwds):
+
+        if cls not in cls._instances:
+            instance = super().__call__()
+            cls._instances[cls] = instance
+
+    def __call__(cls, *args, **kwargs):
+        if args or kwargs:
+            raise TypeError(
+                f"{cls.__name__} is an eager singleton and "
+                "does not accept constructor arguments"
+            )
         return cls._instances[cls]
-    
+
 
 class SingletonGeneratorTwo(metaclass=EagerSingletonMeta):
     

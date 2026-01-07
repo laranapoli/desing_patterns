@@ -40,7 +40,7 @@ O get_instance eh um indicativo de que se trata de um singleton
 
 ### Implementation
 - A logica para tornar a classe um singleton esta definida na metaclasse
-- _instances [dict] guarda a single instance the cada subclasse
+- _instances [dict] guarda a single instance de cada subclasse
 - Sempre que criarmos instancias da classe filha, o gerenciamento sera feito pelo call method sobrescrito da metaclass (garente que apenas 1 instancia exista)
 
 ### Eager loading
@@ -48,7 +48,7 @@ O get_instance eh um indicativo de que se trata de um singleton
 - Permite pre-caching de conectividade
 - Importante p/ acesso frequente que precisa ser rapido
 - Inicializamos e carregamos a instancia antes de precisar dela
-- Possivei atraves das metaclasses - sobrescrever init method
+- Possível atraves das metaclasses - sobrescrever init method
 
 ![eager-loading-singleton](image-4.png)
 
