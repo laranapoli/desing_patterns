@@ -31,3 +31,9 @@
 - Maneira de resolver o problema do if else com strings: ENUMERATION!!
 
 ![ENUM](image-5.png)
+
+# Exercises
+
+![1](image-6.png)
+
+![2](image-7.png)

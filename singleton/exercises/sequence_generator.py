@@ -1,25 +1,26 @@
 class SingletonGenerator:
     _instance = None
+    _current_number = 0
 
     def __new__(cls):
         if not cls._instance:
             cls._instance = super().__new__(cls)
-            cls._instance._current = 0
+            cls._current_number = 0
         return cls._instance
 
     def get_next_number(self):
-        self._current += 1
-        return self._current
+        number = self._current_number
+        self._current_number += 1
+        return number
     
 
-gen = SingletonGenerator()
-gen2 = SingletonGenerator()
-gen3 = SingletonGenerator()
+if __name__ == "__main__":
+    gen = SingletonGenerator()
+    gen2 = SingletonGenerator()
 
-print(gen.get_next_number())
-print(gen2.get_next_number())
-print(gen2.get_next_number())
-print(gen3.get_next_number())
-print(gen.get_next_number())
-print(gen2.get_next_number())
-print(gen.get_next_number())
+    print(f"Gen 1: {gen.get_next_number()}")
+    print(f"Gen 2: {gen2.get_next_number()}")
+    print(f"Gen 2: {gen2.get_next_number()}")
+    print(f"Gen 1: {gen.get_next_number()}")
+    print(f"Gen 2: {gen2.get_next_number()}")
+    print(f"Gen 1: {gen.get_next_number()}")

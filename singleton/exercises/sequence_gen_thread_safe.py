@@ -4,27 +4,32 @@ import threading
 class SingletonGenerator:
     _instance = None
     _lock = threading.Lock()
+    _current_number = 0
 
     def __new__(cls):
         with cls._lock:
             if not cls._instance:
                 cls._instance = super().__new__(cls)
-                cls._instance._current = 0
-            return cls._instance
+        return cls._instance
 
     def get_next_number(self):
-        self._current += 1
-        return self._current
+        with self._lock:
+            number = self._current_number
+            self._current_number += 1
+            return number
     
 
-gen = SingletonGenerator()
-gen2 = SingletonGenerator()
-gen3 = SingletonGenerator()
+def test_singleton_thread_safe():
+    generator = SingletonGenerator()
+    print(f"Generated number: { generator.get_next_number()}")
 
-print(gen.get_next_number())
-print(gen2.get_next_number())
-print(gen2.get_next_number())
-print(gen3.get_next_number())
-print(gen.get_next_number())
-print(gen2.get_next_number())
-print(gen.get_next_number())
+
+if __name__ == "__main__":
+    threads = []
+    for i in range(10):
+        thread = threading.Thread(target=test_singleton_thread_safe)
+        threads.append(thread)
+        thread.start()
+
+    for thread in threads:
+        thread.join()
