@@ -18,3 +18,7 @@
 ## Document Builder UML Diagram
 
 ![document-builder](image-2.png)
+
+## Exercícios
+
+![1](image-3.png)
